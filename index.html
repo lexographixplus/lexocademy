@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexoCademy - Knowledge Base</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body> <!-- Dark mode class 'dark-mode' will be added here by script.js -->
+
+    <!-- Sticky Navigation Bar -->
+    <header class="site-header sticky-nav">
+        <div class="container nav-container">
+            <a href="#" class="logo">LexoCademy</a>
+            <nav class="main-nav">
+                <!-- Dark Mode Toggle Button -->
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode" aria-pressed="false">
+                    <i class="fas fa-moon"></i> <!-- Default icon (light mode) -->
+                    <i class="fas fa-sun" style="display: none;"></i> <!-- Icon for dark mode -->
+                </button>
+                <!-- Navigation Links (Hidden on mobile, shown on desktop) -->
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#topics" class="nav-link">Topics</a></li>
+                    <li><a href="#categories" class="nav-link">Categories</a></li>
+                    <li><a href="#newsletter" class="nav-link">Newsletter</a></li>
+                </ul>
+                 <!-- Hamburger Menu (Shown on mobile) -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Welcome Section -->
+        <section class="welcome-section text-center">
+            <div class="container">
+                <h1>Welcome to LexoCademy</h1>
+                <p class="subtitle">Your online  knowledge base for mastering writing and navigating the world of self-publishing. The platform aimed at empowering authors and aspiring writers knowledge required for success. .</p>
+            </div>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section id="categories" class="search-filter-section">
+             <div class="container search-filter-container">
+                <div class="search-bar">
+                    <input type="search" id="searchInput" placeholder="Search writing/publishing topics...">
+                    <button id="searchButton" aria-label="Search"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-controls">
+                    <label for="categoryFilter">Filter by Category:</label>
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <!-- Specific categories will be populated dynamically by JS -->
+                        <!-- Example placeholders if needed before JS runs: -->
+                        <!-- <option value="writing-craft">Writing Craft</option> -->
+                        <!-- <option value="editing">Editing</option> -->
+                        <!-- <option value="publishing">Publishing</option> -->
+                        <!-- <option value="marketing">Marketing</option> -->
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic Grid Section -->
+        <section id="topics" class="topic-section">
+            <div class="container">
+                <h2 class="section-title">Explore Topics</h2>
+                 <p class="progress-indicator" id="progressIndicator">Loading topics...</p>
+                 <div class="loading-indicator" id="loadingSpinner"></div>
+
+                <div class="topic-grid" id="topicGrid">
+                    <!-- Topic cards dynamically inserted here -->
+                    <!-- Example Card Structure (will be replaced by JS): -->
+                     <!-- <div class="topic-card" data-topic-id="outlining-novel">
+                        <div class="card-icon"><i class="fas fa-map-signs"></i></div>
+                        <h3 class="card-title">Outlining Your Novel</h3>
+                        <p class="card-summary">Discover different outlining methods to structure your story before you write.</p>
+                    </div> -->
+                </div>
+
+                <!-- Pagination Section -->
+                <nav class="pagination" aria-label="Topics pagination">
+                    <ul class="pagination-list" id="paginationList">
+                       <!-- Pagination links dynamically inserted here -->
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup Section -->
+        <section id="newsletter" class="newsletter-section">
+            <div class="container newsletter-container text-center">
+                 <h2>Author Updates & Tips</h2>
+                 <p>Sign up for writing insights, publishing news, and exclusive content.</p>
+                 <form id="newsletterForm" class="newsletter-form">
+                     <div class="form-group">
+                         <label for="newsletterName" class="sr-only">Name</label>
+                         <input type="text" id="newsletterName" name="name" placeholder="Your Name" required>
+                     </div>
+                     <div class="form-group">
+                         <label for="newsletterEmail" class="sr-only">Email</label>
+                         <input type="email" id="newsletterEmail" name="email" placeholder="Your Email" required>
+                     </div>
+                     <button type="submit" class="btn btn-secondary">Subscribe Now</button>
+                 </form>
+                  <p id="newsletterFeedback" class="newsletter-feedback" aria-live="polite"></p>
+             </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+         <div class="container footer-container">
+             <div class="footer-branding">
+                 <span class="logo-footer">LexoCademy</span>
+                 <p>© <span id="currentYear"></span> LexoGraphix Plus. All rights reserved.</p>
+             </div>
+             <div class="footer-links">
+                 <a href="#">Terms & Conditions</a>
+                 <a href="#">Privacy Policy</a>
+                  <!-- Add actual links if available -->
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+             </div>
+         </div>
+    </footer>
+
+    <!-- Topic Modal -->
+     <div class="modal-overlay" id="topicModalOverlay">
+         <div class="modal-content" id="topicModalContent" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+             <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">×</button>
+             <div id="modalBody">
+                 <!-- Modal content loaded dynamically here -->
+                 <p>Loading...</p>
+             </div>
+         </div>
+     </div>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
